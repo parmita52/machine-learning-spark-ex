@@ -4,7 +4,7 @@ This tutorial walks through a basic Machine Learning example from start to finis
 If you already know the basics of ML and just want to learn about Spark Pipelines, feel free to skip to the Spark Pipeline Explanation Section. 
 
 ## What do people typically use ML for?
-![alt text](https://github.com/parmita52/machine-learning-spark-ex/blob/master/images_n/chart1.png "Chart 1")
+![Chart 1](https://github.com/parmita52/machine-learning-spark-ex/blob/master/images_n/chart1.png)
 *Machine Learning*: A *machine* takes in (training) data. Then--without any explicit instructions--it *learns* from that data, usually resulting in a model that makes predictions for the future.
 
 ## Our toy example
