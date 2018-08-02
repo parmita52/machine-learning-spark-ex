@@ -212,7 +212,7 @@ Instead, you can just do
 categorical_features = [feature1, feature2, feature3, feature4, feature5]
 indexers = [StringIndexer(inputCol=e, outputCol=e + “_index”).fit(df) for e in categorical_features] 
 features_for_vector = [e + “_index” for e in categorical_features]
-assembler = VectorAssembler(inputCols=[features_for_vector, outputCol="feature_vector")
+assembler = VectorAssembler(inputCols=features_for_vector, outputCol="feature_vector")
 dt = DecisionTreeClassifier(labelCol="prediction_label", featuresCol="feature_vector")
 Pipeline = Pipeline(stages= indexers + [assembler, dt])
 ```
