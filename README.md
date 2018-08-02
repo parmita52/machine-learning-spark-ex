@@ -25,5 +25,33 @@ There are tons of different models to use, so how do you pick which one? Here's 
 
 A lot of people hear the buzzword "Neural Nets" thrown around whenever Machine Learning is mentioned, but there are actually lots of different types of Machine Learning Algorithms--and depending on what you want, you'll pick a different method. 
 Let's follow the cheat sheet for our example:
+
 ![alt text](https://github.com/parmita52/machine-learning-spark-ex/blob/master/images_n/cheatsheet.png "Cheat Sheet")
+
+A. We are not doing Dimension Reduction (that is sort of its entirely own topic you can read more about it here  https://en.wikipedia.org/wiki/Dimensionality_reduction)
+
+B. We do Have Responses aka we have supervised learning (a nice visual explanation here [Link](https://www.quora.com/What-is-the-difference-between-supervised-and-unsupervised-learning-algorithms "SAS ML Algo Cheat Sheet") 
+but in short, it basically means we have labelled training data. The past data we have on Keith's knife buying habits do have the label of whether or not he bought it. If we didn't have that “Bought” label in the data, we might be trying to do something else. Like maybe we'd look for other patterns in the data. For example “bigger knives tend to be blue” 
+![alt text](https://github.com/parmita52/machine-learning-spark-ex/blob/master/images_n/supervised.png "Supervised vs. Unsupervised")
+Specifically, we are doing classification in this example. 
+
+C. We are not predicting a numeric value. We are predicting whether he will buy the knife or not buy the knife. A numeric prediction might be something more like “How many knives will he buy?”
+
+D. Since this is a beginner tutorial, I'm actually gonna go for the faster models (they also happen to be the simpler, more beginner-friendly ones)
+
+E. I also want the data to be explainable, so I'll pick a decision tree (logistic regression could also be used for this example, but as I'll explain at the end, I sort of rigged this example with patterns to work well with the tree). In real life, in this situation, you may actually carry out both methods and compare them, since you don’t know which one will work better. 
+
+Side note:
+> One “unexplainable” method is actually the famous Neural Net! If the Neural Net predicted “Keith will not buy this knife”, it would not be able to clearly tell you why. With a Decision Tree, it will tell you “Keith will not buy this knife because its color/size...”
+> Depending on what you want, this may or may not be useful, but for our purposes, I’d really like to see the explanation the algorithm comes up with. 
+> When creating this data, I kept in mind that Keith doesn’t really like blue and he prefers larger knives over smaller ones. I want to see if the Decision Tree actually picks up on those patterns and is able to correctly say why certain things are the way they are. 
+
+Awesome! Now we’ve settled on a Decision Tree :)
+You can read more about the math and theory behind Decision Trees Here [Link](https://en.wikipedia.org/wiki/Decision_tree_learning "Wikipedia"), but if you don't need to know that, feel free to simply look at the next picture, and you'll pretty much understand what a Decision Tree is.
+
+![alt text](https://github.com/parmita52/machine-learning-spark-ex/blob/master/images_n/parkTree.png "Park DT")
+
+Our goal is to make a tree like this, but for Keith’s knife-buying scenario. 
+Out features are Color and Size and we want to predict Buying the knife. 
+
 
