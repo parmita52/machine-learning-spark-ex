@@ -1,0 +1,76 @@
+
++-------+----+------+-----------+
+|  Color|Size|Bought|Bought_Flag|
++-------+----+------+-----------+
+|   blue|   7|     N|          0|
+|    red|   7|     Y|          1|
+|   blue|   4|     N|          0|
+|rainbow|   4|     Y|          1|
+|rainbow|   7|     Y|          1|
+|    red|   9|     Y|          1|
+|   blue|  10|     N|          0|
+|    red|   8|     Y|          1|
+|   blue|   4|     N|          0|
+|    red|   6|     N|          0|
+|    red|   3|     N|          0|
+|    red|   7|     Y|          1|
+|   blue|   4|     N|          0|
+|   blue|   9|     N|          0|
+|rainbow|   5|     Y|          1|
+|   blue|   8|     N|          0|
+|rainbow|   6|     Y|          1|
+|rainbow|   8|     Y|          1|
+|rainbow|   9|     Y|          1|
+|   blue|   7|     N|          0|
++-------+----+------+-----------+
+only showing top 20 rows
+
+root
+ |-- Color: string (nullable = true)
+ |-- Size: integer (nullable = true)
+ |-- Bought: string (nullable = true)
+ |-- Bought_Flag: integer (nullable = true)
+
++-------+----+------+-----------+-----------+--------------+-------------+-----------+----------+
+|  Color|Size|Bought|Bought_Flag|Color_index|feature_vector|rawPrediction|probability|prediction|
++-------+----+------+-----------+-----------+--------------+-------------+-----------+----------+
+|   blue|   4|     N|          0|        1.0|     [1.0,4.0]|   [10.0,0.0]|  [1.0,0.0]|       0.0|
+|   blue|   4|     N|          0|        1.0|     [1.0,4.0]|   [10.0,0.0]|  [1.0,0.0]|       0.0|
+|   blue|   5|     N|          0|        1.0|     [1.0,5.0]|   [10.0,0.0]|  [1.0,0.0]|       0.0|
+|   blue|   9|     N|          0|        1.0|     [1.0,9.0]|   [10.0,0.0]|  [1.0,0.0]|       0.0|
+|rainbow|   4|     Y|          1|        0.0|     [0.0,4.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|rainbow|   5|     Y|          1|        0.0|     [0.0,5.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|rainbow|   5|     Y|          1|        0.0|     [0.0,5.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|rainbow|   5|     Y|          1|        0.0|     [0.0,5.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|rainbow|   6|     Y|          1|        0.0|     [0.0,6.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|rainbow|   7|     Y|          1|        0.0|     [0.0,7.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|rainbow|   9|     Y|          1|        0.0|     [0.0,9.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|    red|   3|     N|          0|        2.0|     [2.0,3.0]|    [4.0,0.0]|  [1.0,0.0]|       0.0|
+|    red|   3|     N|          0|        2.0|     [2.0,3.0]|    [4.0,0.0]|  [1.0,0.0]|       0.0|
+|    red|   6|     N|          0|        2.0|     [2.0,6.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|    red|   7|     Y|          1|        2.0|     [2.0,7.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|    red|   7|     Y|          1|        2.0|     [2.0,7.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
+|    red|   8|     Y|          1|        2.0|     [2.0,8.0]|   [0.0,19.0]|  [0.0,1.0]|       1.0|
++-------+----+------+-----------+-----------+--------------+-------------+-----------+----------+
+
+                     
+Accuracy         0.941
+TN               0.857
+TP               1.000
+FN               0.000
+FP               0.143
+True Negative    6.000
+True Positives  10.000
+False Negatives  0.000
+False Positives  1.000
+
+DecisionTreeClassificationModel (uid=DecisionTreeClassifier_4d9db334ff315251d3f4) of depth 2 with 5 nodes
+  If (feature 0 in {1.0})
+   Predict: 0.0
+  Else (feature 0 not in {1.0})
+   If (feature 1 <= 3.5)
+    Predict: 0.0
+   Else (feature 1 > 3.5)
+    Predict: 1.0
+
+Process finished with exit code 0
