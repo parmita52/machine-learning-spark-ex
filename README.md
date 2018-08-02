@@ -29,18 +29,18 @@ Let's follow the cheat sheet for our example:
 
 ![alt text](/images_n/cheatsheet.png "Cheat Sheet")
 
-A. We are not doing Dimension Reduction (that is sort of its entirely own topic you can read more about it [here](https://en.wikipedia.org/wiki/Dimensionality_reduction "Wikipedia"))
+**A.** We are not doing Dimension Reduction (that is sort of its entirely own topic you can read more about it [here](https://en.wikipedia.org/wiki/Dimensionality_reduction "Wikipedia"))
 
-B. We do Have Responses aka we have supervised learning (a nice visual explanation [here](https://www.quora.com/What-is-the-difference-between-supervised-and-unsupervised-learning-algorithms "Nice Quora Answer") 
+**B.** We do Have Responses aka we have supervised learning (a nice visual explanation [here](https://www.quora.com/What-is-the-difference-between-supervised-and-unsupervised-learning-algorithms "Nice Quora Answer") 
 but in short, it basically means we have labelled training data. The past data we have on Keith's knife buying habits do have the label of whether or not he bought it. If we didn't have that “Bought” label in the data, we might be trying to do something else. Like maybe we'd look for other patterns in the data. For example “bigger knives tend to be blue” 
 ![alt text](/images_n/supervised.png "Supervised vs. Unsupervised")
 Specifically, we are doing classification in this example. 
 
-C. We are not predicting a numeric value. We are predicting whether he will buy the knife or not buy the knife. A numeric prediction might be something more like “How many knives will he buy?”
+**C.** We are not predicting a numeric value. We are predicting whether he will buy the knife or not buy the knife. A numeric prediction might be something more like “How many knives will he buy?”
 
-D. Since this is a beginner tutorial, I'm actually gonna go for the faster models (they also happen to be the simpler, more beginner-friendly ones)
+**D.** Since this is a beginner tutorial, I'm actually gonna go for the faster models (they also happen to be the simpler, more beginner-friendly ones)
 
-E. I also want the data to be explainable, so I'll pick a decision tree (logistic regression could also be used for this example, but as I'll explain at the end, I sort of rigged this example with patterns to work well with the tree). In real life, in this situation, you may actually carry out both methods and compare them, since you don’t know which one will work better. 
+**E.** I also want the data to be explainable, so I'll pick a decision tree (logistic regression could also be used for this example, but as I'll explain at the end, I sort of rigged this example with patterns to work well with the tree). In real life, in this situation, you may actually carry out both methods and compare them, since you don’t know which one will work better. 
 
 Side note:
 > One “unexplainable” method is actually the famous Neural Net! If the Neural Net predicted “Keith will not buy this knife”, it would not be able to clearly tell you why. With a Decision Tree, it will tell you “Keith will not buy this knife because its color/size...”
