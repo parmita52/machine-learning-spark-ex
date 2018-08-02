@@ -11,7 +11,7 @@ If you already know the basics of ML and just want to learn about Spark Pipeline
 Keith likes to collect knives. There are 2 features of knives he's looking at: color and size
 Based on knives he bought in the past, can we predict whether or not he will buy a particular knife in the future?
 ![alt text](/images_n/chart2.png "Chart 2")
-
+TODO
 This dummy example I created can be found in data.csv. The data is only 50 rows long to allow for easy human understanding and intervention. It's purpose to to help to learn the concepts of what's going on. In real life, data can be literally millions, if not billions, of rows long and thus it becomes basically impossible for humans to analyze on their own. 
 Now’s a good time to open up the .csv file in something like Excel to get a feel for what's going on.
 ![alt text](/images_n/goal2.png "Goal")
@@ -72,27 +72,27 @@ We need to somehow turn the features we have into a vector and have the predicti
 ![alt text](/images_n/goal.png "Data Prep")
 
 So we have a nice little task list:
-###### Task 1 - turn the Prediction Label (Bought) into something numerical
+### Task 1 - turn the Prediction Label (Bought) into something numerical
 ![alt text](/images_n/task1.png "Task 1")
-###### Task 2 - Turn the Colors feature into a numerical index 
+### Task 2 - Turn the Colors feature into a numerical index 
 (Size is already numerical, so we're all set there) 
 ![alt text](/images_n/task2.png "Task 2")
-###### Task 3 - Combine the features into one features vector column  
+### Task 3 - Combine the features into one features vector column  
 ![alt text](/images_n/task3.png "Task 3")
-###### Task 4 - Use this prepared data to train a Decision Tree Model 
+### Task 4 - Use this prepared data to train a Decision Tree Model 
 ![alt text](/images_n/task4.png "Task 4")
 
 How will we accomplish each of these tasks? Spark provides a lot of tools for exactly this purpose. In fact, Task 1 is super simple and Tasks 2, 3, and 4 have special Spark Tools made just for their purpose.
 
-###### Task 1
+### Task 1
 Just use casting (actually pretty easy, does not need ML tools)
 `df = df.withColumn("Bought_Flag", df["Bought"].cast("boolean").cast("int"))`
 
-###### Task 2
+### Task 2
 Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
-###### Task 3
+### Task 3
 Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
-###### Task 4
+### Task 4
 Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
 
 Ok so what exactly are these three new...
@@ -100,6 +100,130 @@ Ok so what exactly are these three new...
 ## Spark Tools 
 For now, read the sheet below and just understand what each tool does. The rest (about Estimators and Transformers) will make more sense after reading the next sheet about Pipelines, Estimators, and Transformers. 
 ![alt text](/images_n/tools.png "Spark Tools")
+
+So in total, we will be using these Spark Tools on our training and testing data like so:
+![alt text](/images_n/chart5.png "Chart 5")
+This way, we can use the training data to make our Decision Tree Model and then determine how good the model actually is by testing it against the testing data. 
+
+Note that even though we will be splitting up into training and testing data, there is a lot of repeated action:
+BOTH training and testing data go through the String Indexer and the Vector Assembler so that they get turned into numbers. 
+ONLY TRAINING data is used to generate the Decision Tree Model
+ONLY TESTING data is used with the Model to generate predictions
+ 
+Pipelines take care of this for you, so you avoid repeating code which often causes errors. 
+...so what exactly is a Pipeline?
+
+## Spark Pipeline
+In general, an ML Pipeline is simply a process--a set of steps done in order--to the data to facilitate creating and using the model. 
+The Spark ML Pipelines are the most widely used implementation of this concept. 
+
+Spark gives an in depth technical description of their Pipelines [here](https://spark.apache.org/docs/2.2.0/ml-pipeline.html#example-estimator-transformer-and-param "Spark docs"), but if you just understand the cheat sheet below, you should be good. 
+![alt text](/images_n/Pipeline.png)
+
+Now that you understand Estimators and Transformers a bit more, it may be useful to go back and review the descriptions of the StringIndexer, VectorAssembler, and DecisionTreeClassifier. 
+
+All right! Time to get started with the code!
+
+## Let's get to it!
+
+**Follow along with the code in `DecisionTree.py` as you look at this diagram. This is the important part where you should spend most of your time! Feel free to rewrite the code on your own so you really get what’s going on!**
+![alt text](/images_n/chart6.png)
+
+And that’s about it! You have just successfully used an ML Pipeline to carry out the training and testing of a Decision Tree! Congrats! :)
+
+Note how much using the Pipeline radically improves the code:
+
+Without a Pipeline:
+```python
+x = (color_indexer.fit(trainingData)).transform(trainingData)
+x = assembler.transform(x)
+x = dt.fit(x)
+y = (color_indexer.fit(trainingData)).transform(testData)
+y = assembler.transform(y)
+predictions = x.transform(y)
+```
+With the Pipeline: 
+```python
+pipeline = Pipeline(stages=[color_indexer, assembler, dt])
+model = pipeline.fit(trainingData)
+predictions = model.transform(testData)
+```
+
+Without pipelines, this is can be pretty difficult to follow. Most importantly however, we avoid repeated code! If later on, we decide there's actually one more step to modifying and preparing the data, without a pipeline, we would have to write it twice and make sure it properly lines up for training and testing. With a Pipeline, you simply add the extra step to the stages of the pipeline and voila! it does it correctly for both training and testing. 
+
+Pipelines also take care of the difference between Estimators and Transformers for you so that you don’t have to worry about when to use `.fit().transform()` and when to use `.transform()`.
+
+Pipelines also have the added benefit that they can be [saved](https://spark.apache.org/docs/2.2.0/ml-pipeline.html#saving-and-loading-pipelines) for later use. 
+
+## Results
+
+Phew! That was a lot of work! Time to look at our results. I have chosen to use accuracy stats with a confusion matrix, since they are among the most intuitive, but there are many other valid (and some more informative) metrics to use to judge the performance of your model (ROC score, sensitivity, specificity, etc.)
+
+The model I generated looks like this (`exampleOutput.txt`):
+![alt text](/images_n/finalTree.png "Yay! Final Tree!")
+(Keep in mind that yours may look different depending on how the random split between your training and testing data went)
+
+And it does really well:
+![alt text](/images_n/confusionMatrix.png)
+(How to interpret a confusion matrix [here](https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/))
+
+Now imagine we were given another new set of data, but this is unlabeled. We can again just use `model.transform(newdata)` and it will generate new predictions. 
+In other words: 
+If we walked into a store full of knives and we could see their color and size, we want to predict whether Keith would buy them or not without him telling us. We could pick up a knife, look at its color, measure its size and then using the tree, we could predict with 94% accuracy whether Keith would buy it or not. 
+
+Normally, with such a small dataset, you wouldn't get such high accuracy ratings. But as I mentioned earlier, I somewhat rigged the data. As I was generating this data, I kept in mind that Keith hates blue knives, and generally prefers larger knives. The decision tree actually picked up on that underlying pattern correctly when it created its model! 
+TODO
+Think about that for a second! Isn’t it amazing!? I never once explicitly wrote in the code that “btw, I set up the data so that Keith doesn’t like blue, and prefers larger knives.” But by running this algorithm on the data, it automatically picked up on this pattern. That’s the power of machine learning!
+
+## Conclusion 
+Awesome! You just learned:
+ - How to pick an ML algorithm 
+ - The huge role data cleaning/prep plays in ML
+ - Some techniques for preparing the data
+ - What an ML Pipeline is
+ - How to implement one using Spark 
+
+Big Idea: How the general ML paradigm gets adapted to a specific use case
+TODO
+
+## Where to go from here?
+ - Read about more ML topics, like all the ones on that cheat sheet
+ - Saw some words you didn’t recognize (clustering, association, ROC, regression etc…) Google them! Learn some more! TODO
+ - Improve this existing model by tuning the hyperparameters (change the depth of this tree)
+ - Test this out on a much larger, more legit dataset 
+ - Check out all the other Transformers and Estimators Spark provides TODO
+
+## Bonus! Tip for multiple StringIndexers
+Here we had exactly 1 categorical variable which we needed to assign an index to (Color). But imagine you had like fifty, or a hundred. It seems pretty bad to create an indexer for each and every single one of them like this:
+```python
+feature1_indexer = StringIndexer(inputCol='feature1', outputCol='feature1_index')
+feature2_indexer = StringIndexer(inputCol='feature2', outputCol='feature2_index')
+feature3_indexer = StringIndexer(inputCol='feature3', outputCol='feature3_index')
+feature4_indexer = StringIndexer(inputCol='feature4', outputCol='feature4_index')
+feature5_indexer = StringIndexer(inputCol='feature5', outputCol='feature5_index')
+assembler = VectorAssembler(inputCols=['feature1_index', 'feature2_index', 'feature3_index', 'feature4_index', 'feature5_index'], outputCol="feature_vector")
+dt = DecisionTreeClassifier(labelCol="prediction_label", featuresCol="feature_vector")
+Pipeline = Pipeline(stages=[feature1_indexer, feature2_indexer, feature3_indexer, feature4_indexer, feature5_indexer,  assembler, dt])
+```
+Instead, you can just do
+```python
+categorical_features = [feature1, feature2, feature3, feature4, feature5]
+indexers = [StringIndexer(inputCol=e, outputCol=e + “_index”).fit(df) for e in categorical_features] 
+features_for_vector = [e + “_index” for e in categorical_features]
+assembler = VectorAssembler(inputCols=[features_for_vector, outputCol="feature_vector")
+dt = DecisionTreeClassifier(labelCol="prediction_label", featuresCol="feature_vector")
+Pipeline = Pipeline(stages= indexers + [assembler, dt])
+```
+
+Python list comprehension can be super useful here! Note how there’s less repeated code and fewer opportunities for error. Also, if I decide to add one more feature, I just have to add it in one location everything else automatically adjusts. 
+
+
+
+
+
+
+
+
 
 
 
