@@ -186,7 +186,7 @@ Awesome! You just learned:
  - How to implement one using Spark 
 
 Big Idea: How the general ML paradigm gets adapted to a specific use case
-TODO
+![alt text](/images_n/Paradigm.png "Paradigm")
 
 # Where to go from here?
  - Read about more ML topics, like all the ones on that cheat sheet
