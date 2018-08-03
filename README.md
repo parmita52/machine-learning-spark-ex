@@ -190,10 +190,11 @@ Big Idea: How the general ML paradigm gets adapted to a specific use case
 
 # Where to go from here?
  - Read about more ML topics, like all the ones on that cheat sheet
- - Saw some words you didn’t recognize (clustering, association, ROC, regression etc…) Google them! Learn some more! TODO
- - Improve this existing model by tuning the hyperparameters (change the depth of this tree)
+ - Saw some words you didn’t recognize ([clustering](https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68), [association](https://en.wikipedia.org/wiki/Association_rule_learning), [ROC](https://www.dataschool.io/roc-curves-and-auc-explained/), [regression](https://www.quora.com/What-is-regression-in-machine-learning) etc…) Google them! Learn some more!
+ - Improve this existing model by tuning the hyperparameters (ex. change the depth of this tree)
  - Test this out on a much larger, more legit dataset 
- - Check out all the other Transformers and Estimators Spark provides TODO
+ - Use a completely different model and see if it does better or worse. (go ahead and try that Neural Net or maybe Logistic Regression or a Random Forest!)
+ - Check out all the [other Transformers and Estimators](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#) Spark provides
 
 # Bonus! Tip for multiple StringIndexers
 Here we had exactly 1 categorical variable which we needed to assign an index to (Color). But imagine you had like fifty, or a hundred. It seems pretty bad to create an indexer for each and every single one of them like this:
@@ -218,6 +219,8 @@ Pipeline = Pipeline(stages= indexers + [assembler, dt])
 ```
 
 Python list comprehension can be super useful here! Note how there’s less repeated code and fewer opportunities for error. Also, if I decide to add one more feature, I just have to add it in one location everything else automatically adjusts. 
+
+# Q & A
 
 
 
