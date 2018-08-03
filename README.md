@@ -3,29 +3,18 @@ This tutorial walks through a basic Machine Learning example from start to finis
 
 If you already know the basics of ML and just want to learn about Spark Pipelines, feel free to skip to the Spark Pipeline Explanation Section. 
 
-[General ML](https://github.com/parmita52/machine-learning-spark-ex#what-do-people-typically-use-ml-for)
-
-[Toy Example](https://github.com/parmita52/machine-learning-spark-ex#our-toy-example)
-
-[Picking a Model](https://github.com/parmita52/machine-learning-spark-ex#what-model-do-we-use)
-
-[Using the Model](https://github.com/parmita52/machine-learning-spark-ex#how-do-we-actually-use-it)
-
-[Spark Tools](https://github.com/parmita52/machine-learning-spark-ex#spark-tools)
-
-[Spark Pipeline](https://github.com/parmita52/machine-learning-spark-ex#spark-pipeline)
-
-[Implementing it!](https://github.com/parmita52/machine-learning-spark-ex#lets-get-to-it)
-
-[Results](https://github.com/parmita52/machine-learning-spark-ex#results)
-
-[Conclusion](https://github.com/parmita52/machine-learning-spark-ex#conclusion)
-
-[Future Steps](https://github.com/parmita52/machine-learning-spark-ex#where-to-go-from-here)
-
-[Bonus Tip](https://github.com/parmita52/machine-learning-spark-ex#bonus-tip-for-multiple-stringindexers)
-
-[Q & A](https://github.com/parmita52/machine-learning-spark-ex#q--a)
+-[General ML](https://github.com/parmita52/machine-learning-spark-ex#what-do-people-typically-use-ml-for)
+-[Toy Example](https://github.com/parmita52/machine-learning-spark-ex#our-toy-example)
+-[Picking a Model](https://github.com/parmita52/machine-learning-spark-ex#what-model-do-we-use)
+-[Using the Model](https://github.com/parmita52/machine-learning-spark-ex#how-do-we-actually-use-it)
+-[Spark Tools](https://github.com/parmita52/machine-learning-spark-ex#spark-tools)
+-[Spark Pipeline](https://github.com/parmita52/machine-learning-spark-ex#spark-pipeline)
+-[Implementing it!](https://github.com/parmita52/machine-learning-spark-ex#lets-get-to-it)
+-[Results](https://github.com/parmita52/machine-learning-spark-ex#results)
+-[Conclusion](https://github.com/parmita52/machine-learning-spark-ex#conclusion)
+-[Future Steps](https://github.com/parmita52/machine-learning-spark-ex#where-to-go-from-here)
+-[Bonus Tip](https://github.com/parmita52/machine-learning-spark-ex#bonus-tip-for-multiple-stringindexers)
+-[Q & A](https://github.com/parmita52/machine-learning-spark-ex#q--a)
 
 
 # What do people typically use ML for?
