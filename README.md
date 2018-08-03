@@ -1,13 +1,13 @@
 # ML Spark Walkthrough Tutorial
 This tutorial walks through a basic Machine Learning example from start to finish. It explains critical big ideas in ML and goes into specifics of how to use the Apache Spark ML Pipelines for implementation. 
 
-If you already know the basics of ML and just want to learn about Spark Pipelines, feel free to skip to the Spark Pipeline Explanation Section. 
+If you already know the basics of ML and just want to learn about Spark Tools/Pipelines, feel free to skip to that section
 
 - [General ML](https://github.com/parmita52/machine-learning-spark-ex#what-do-people-typically-use-ml-for)
 - [Toy Example](https://github.com/parmita52/machine-learning-spark-ex#our-toy-example)
 - [Picking a Model](https://github.com/parmita52/machine-learning-spark-ex#what-model-do-we-use)
 - [Using the Model](https://github.com/parmita52/machine-learning-spark-ex#how-do-we-actually-use-it)
-- [Spark Tools](https://github.com/parmita52/machine-learning-spark-ex#spark-tools)
+- [Spark Tools](https://github.com/parmita52/machine-learning-spark-ex#spark-tools) <-- skip here if advanced 
 - [Spark Pipeline](https://github.com/parmita52/machine-learning-spark-ex#spark-pipeline)
 - [Implementing it!](https://github.com/parmita52/machine-learning-spark-ex#lets-get-to-it)
 - [Results](https://github.com/parmita52/machine-learning-spark-ex#results)
@@ -202,7 +202,7 @@ Big Idea: How the general ML paradigm gets adapted to a specific use case
 
 # Where to go from here?
  - Read about more ML topics, like all the ones on that cheat sheet
- - Saw some words you didn’t recognize ([clustering](https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68), [association](https://en.wikipedia.org/wiki/Association_rule_learning), [ROC](https://www.dataschool.io/roc-curves-and-auc-explained/), [regression](https://www.quora.com/What-is-regression-in-machine-learning) etc…) Google them! Learn some more!
+ - Saw some words you didn’t recognize? ([clustering](https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68), [association](https://en.wikipedia.org/wiki/Association_rule_learning), [ROC](https://www.dataschool.io/roc-curves-and-auc-explained/), [regression](https://www.quora.com/What-is-regression-in-machine-learning) etc…) Google them! Learn some more!
  - Improve this existing model by tuning the hyperparameters (ex. change the depth of this tree)
  - Test this out on a much larger, more legit dataset 
  - Use a completely different model and see if it does better or worse. (go ahead and try that Neural Net or maybe Logistic Regression or a Random Forest!)
