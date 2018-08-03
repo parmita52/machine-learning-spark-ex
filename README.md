@@ -140,6 +140,11 @@ All right! Time to get started with the code!
 
 # Let's get to it!
 
+Setup
+> Note that you should have Python and Spark installed for this to work
+> Python [here](https://www.python.org/downloads/)
+> Apache Spark [here](https://spark.apache.org/downloads.html)
+
 **Follow along with the code in `DecisionTree.py` as you look at this diagram. This is the important part where you should spend most of your time! Feel free to rewrite the code on your own so you really get what’s going on!**
 ![alt text](/images_n/chart6.png)
 
