@@ -99,7 +99,7 @@ So we have a nice little task list:
 How will we accomplish each of these tasks? Spark provides a lot of tools for exactly this purpose. In fact, Task 1 is super simple and Tasks 2, 3, and 4 have special Spark Tools made just for their purpose.
 
 ## Task 1
-Just use casting (actually pretty easy, does not need ML tools)
+Just use casting (actually pretty easy, does not need ML tools)  
 `df = df.withColumn("Bought_Flag", df["Bought"].cast("boolean").cast("int"))`
 
 ## Task 2
@@ -140,7 +140,6 @@ All right! Time to get started with the code!
 
 # Let's get to it!
 
-Setup
 > Note that you should have Python and Spark installed for this to work  
 > Python [here](https://www.python.org/downloads/)  
 > Apache Spark [here](https://spark.apache.org/downloads.html)  
