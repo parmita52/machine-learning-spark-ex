@@ -22,10 +22,10 @@ If you already know the basics of ML and just want to learn about Spark Tools/Pi
 *Machine Learning*: A *machine* takes in (training) data. Then--without any explicit instructions--it *learns* from that data, usually resulting in a model that makes predictions for the future.
 
 # Our toy example
-Keith likes to collect knives. There are 2 features of knives he's looking at: color and size
+![alt_text](/images_n/Keith1.jpg "Keith and knives")
+Keith likes to collect knives and swords. There are 2 *features* he considers when deciding to get one: color and size  
 Based on knives he bought in the past, can we predict whether or not he will buy a particular knife in the future?
 ![alt text](/images_n/chart2.png "Chart 2")
-TODO
 This dummy example I created can be found in data.csv. The data is only 50 rows long to allow for easy human understanding and intervention. It's purpose to to help to learn the concepts of what's going on. In real life, data can be literally millions, if not billions, of rows long and thus it becomes basically impossible for humans to analyze on their own. 
 Now’s a good time to open up the .csv file in something like Excel to get a feel for what's going on.
 ![alt text](/images_n/goal2.png "Goal")
@@ -59,12 +59,12 @@ Side note:
 > Depending on what you want, this may or may not be useful, but for our purposes, I’d really like to see the explanation the algorithm comes up with. 
 > When creating this data, I kept in mind that Keith doesn’t really like blue and he prefers larger knives over smaller ones. I want to see if the Decision Tree actually picks up on those patterns and is able to correctly say why certain things are the way they are. 
 
-Awesome! Now we’ve settled on a Decision Tree :)
+Awesome! Now we’ve settled on a Decision Tree :)  
 You can read more about the math and theory behind Decision Trees [here](https://en.wikipedia.org/wiki/Decision_tree_learning "Wikipedia"), but if you don't need to know that, feel free to simply look at the next picture, and you'll pretty much understand what a Decision Tree is.
 
 ![alt text](/images_n/parkTree.png "Park DT")
 
-Our goal is to make a tree like this, but for Keith’s knife-buying scenario. 
+Our goal is to make a tree like this, but for Keith’s knife-buying scenario.  
 Out features are Color and Size and we want to predict Buying the knife. 
 
 Keep in mind that in real scenarios, you could have hundreds of features and you could generate a decision tree so incredibly massive, that it’s basically just for computers to use (not very human-readable). 
@@ -81,7 +81,7 @@ So we have to take the data that we have and turn it into something...more numbe
 
 In fact, one of the first thing you should always do in any machine learning project is to actually look at the data and plan your steps. Data scientists actually typically spend more than half their time cleaning and preparing data, and only the remaining time for training models and further analysis. 
 
-Luckily, the data I provided purposefully needs minimal cleaning and prep. Let's take a look:
+Luckily, the data I provided purposefully needs minimal cleaning and prep. Let's take a look:  
 We need to somehow turn the features we have into a vector and have the prediction be number. 
 ![alt text](/images_n/goal.png "Data Prep")
 
@@ -119,16 +119,16 @@ So in total, we will be using these Spark Tools on our training and testing data
 ![alt text](/images_n/chart5.png "Chart 5")
 This way, we can use the training data to make our Decision Tree Model and then determine how good the model actually is by testing it against the testing data. 
 
-Note that even though we will be splitting up into training and testing data, there is a lot of repeated action:
-BOTH training and testing data go through the String Indexer and the Vector Assembler so that they get turned into numbers. 
-ONLY TRAINING data is used to generate the Decision Tree Model
-ONLY TESTING data is used with the Model to generate predictions
+Note that even though we will be splitting up into training and testing data, there is a lot of repeated action:  
+BOTH training and testing data go through the String Indexer and the Vector Assembler so that they get turned into numbers.   
+ONLY TRAINING data is used to generate the Decision Tree Model  
+ONLY TESTING data is used with the Model to generate predictions  
  
-Pipelines take care of this for you, so you avoid repeating code which often causes errors. 
+Pipelines take care of this for you, so you avoid repeating code which often causes errors.  
 ...so what exactly is a Pipeline?
 
 # Spark Pipeline
-In general, an ML Pipeline is simply a process--a set of steps done in order--to the data to facilitate creating and using the model. 
+In general, an ML Pipeline is simply a process--a set of steps done in order--to the data to facilitate creating and using the model.  
 The Spark ML Pipelines are the most widely used implementation of this concept. 
 
 Spark gives an in depth technical description of their Pipelines [here](https://spark.apache.org/docs/2.2.0/ml-pipeline.html#example-estimator-transformer-and-param "Spark docs"), but if you just understand the cheat sheet below, you should be good. 
@@ -190,7 +190,7 @@ In other words:
 If we walked into a store full of knives and we could see their color and size, we want to predict whether Keith would buy them or not without him telling us. We could pick up a knife, look at its color, measure its size and then using the tree, we could predict with 94% accuracy whether Keith would buy it or not. 
 
 Normally, with such a small dataset, you wouldn't get such high accuracy ratings. But as I mentioned earlier, I somewhat rigged the data. As I was generating this data, I kept in mind that Keith hates blue knives, and generally prefers larger knives. The decision tree actually picked up on that underlying pattern correctly when it created its model! 
-TODO
+![alt_text](/images_n/Keith2.jpg "Keiths")
 Think about that for a second! Isn’t it amazing!? I never once explicitly wrote in the code that “btw, I set up the data so that Keith doesn’t like blue, and prefers larger knives.” But by running this algorithm on the data, it automatically picked up on this pattern. That’s the power of machine learning!
 
 # Conclusion 
