@@ -88,44 +88,21 @@ We need to somehow turn the prediction label into a number and turn the features
 So we have a nice little task list:
 ## Task 1 - Turn the Prediction Label (Bought) into something numerical
 ![alt text](/images_n/task1.png "Task 1")
+Just use casting
 ## Task 2 - Turn the Colors feature into a numerical index 
 (Size is already numerical, so we're all set there) 
 ![alt text](/images_n/task2.png "Task 2")
+Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
 ## Task 3 - Combine the features into one feature vector column  
 ![alt text](/images_n/task3.png "Task 3")
+Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
 ## Task 4 - Use this prepared data to train a Decision Tree Model 
 ![alt text](/images_n/task4.png "Task 4")
-
-How will we accomplish each of these tasks? Spark provides a lot of tools for exactly this purpose. In fact, Task 1 is super simple and Tasks 2, 3, and 4 have special Spark Tools made just for their purpose.
-
-## Task 1
-Just use casting (actually pretty easy, does not need ML tools)  
-`df = df.withColumn("Bought_Flag", df["Bought"].cast("boolean").cast("int"))`
-
-## Task 2
-Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
-## Task 3
-Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
-## Task 4
 Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
 
-Ok so what exactly are these three new Spark Tools?
+Ok, so what exactly is a StringIndexer, VectorAssembler, and DecisionTreeClassifier? These three Spark Tools are the Estimators and Transformers that will make up our Spark Pipeline. (Don't worry if you didn't understand any of those terms yet--we're about to define them!)  
 
-# Spark Tools 
-For now, read the sheet below and just understand what each tool does. The rest (about Estimators and Transformers) will make more sense after reading the next sheet about Pipelines, Estimators, and Transformers. 
-![alt text](/images_n/tools_new.png "Spark Tools")
-
-So in total, we will be using these Spark Tools on our training and testing data like so:
-![alt text](/images_n/chart5.png "Chart 5")
-This way, we can use the training data to make our Decision Tree Model and then determine how good the model actually is by testing it against the testing data. 
-
-Note that even though we will be splitting up into training and testing data, there is a lot of repeated action:  
-BOTH training and testing data go through the String Indexer and the Vector Assembler so that they get turned into numbers.   
-ONLY TRAINING data is used to generate the Decision Tree Model  
-ONLY TESTING data is used with the Model to generate predictions  
- 
-Pipelines take care of this for you, so you avoid repeating code which often causes errors.  
-...so what exactly is a Pipeline?
+So to understand how to use them, first we have to learn what a Spark Pipeline is.
 
 # Spark Pipeline
 In general, an ML Pipeline is simply a process--a set of steps done in order--to the data to facilitate creating and using the model.  
@@ -134,7 +111,25 @@ The Spark ML Pipelines are the most widely used implementation of this concept.
 Spark gives an in depth technical description of their Pipelines [here](https://spark.apache.org/docs/2.2.0/ml-pipeline.html#example-estimator-transformer-and-param "Spark docs"), but if you just understand the cheat sheet below, you should be good. 
 ![alt text](/images_n/Pipeline.png)
 
-Now that you understand Estimators and Transformers a bit more, it may be useful to go back and review the descriptions of the StringIndexer, VectorAssembler, and DecisionTreeClassifier. 
+Now that you understand Estimators and Transformers, we can go back to figuring out what the Spark Tools: StringIndexer, VectorAssembler, and DecisionTreeClassifier do. 
+
+# Spark Tools 
+Make sure you understand what each tools is doing and how that helps us accomplish things on our tasklist. Note how Estimators and Trandformers act slightly differently. 
+![alt text](/images_n/tools_new.png "Spark Tools")
+*Make sure you can see the difference between the* `DecisionTreeClassifier` (Estimator) *and the* `DecisionTreeClassificationModel` (Transformer).
+
+So in total, we will be using these Spark Tools on our training and testing data like so:
+![alt text](/images_n/chart5.png "Chart 5")
+This way, we can use the training data to make our Decision Tree Model and then determine how good the model actually is by testing it against the testing data. 
+
+Note that even though we will be splitting up into training and testing data, there is a lot of repeated action:  
+*BOTH* training and testing data go through the String Indexer and the Vector Assembler so that they get turned into numbers.   
+*ONLY TRAINING* data is used to generate the Decision Tree Model  
+*ONLY TESTING* data is used with the Model to generate predictions  
+ 
+Pipelines take care of this for you, so you avoid repeating code which often causes errors.  
+
+If you still are a bit hazy on what "Pipeline," "Estimator," "Transformer," or any of the Spark Tools mean, please read over the cheat sheets again, or click on the links which go to the official Spark documentation for a more in depth, technical explanation. 
 
 All right! Time to get started with the code!
 
