@@ -89,19 +89,24 @@ So we have a nice little task list:
 ### Task 1 - Turn the Prediction Label (Bought) into something numerical
 ![alt text](/images_n/task1.png "Task 1")
 **Solution:** Just use casting: `.cast("boolean").cast("int")`
+
 ---
 ### Task 2 - Turn the Colors feature into a numerical index 
 (Size is already numerical, so we're all set there) 
 ![alt text](/images_n/task2.png "Task 2")
 **Solution:** Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
+
 ---
 ### Task 3 - Combine the features into one feature vector column  
 ![alt text](/images_n/task3.png "Task 3")
 **Solution:** Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
+
 ---
 ### Task 4 - Use this prepared data to train a Decision Tree Model 
 ![alt text](/images_n/task4.png "Task 4")
 **Solution:** Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
+
+---
 
 Ok, so what exactly is a StringIndexer, VectorAssembler, and DecisionTreeClassifier? These three Spark Tools are the Estimators and Transformers that will make up our Spark Pipeline. (Don't worry if you didn't understand any of those terms yet--we're about to define them!)  
 
