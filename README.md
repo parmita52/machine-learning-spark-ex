@@ -113,7 +113,7 @@ Ok so what exactly are these three new Spark Tools?
 
 # Spark Tools 
 For now, read the sheet below and just understand what each tool does. The rest (about Estimators and Transformers) will make more sense after reading the next sheet about Pipelines, Estimators, and Transformers. 
-![alt text](/images_n/tools.png "Spark Tools")
+![alt text](/images_n/tools_new.png "Spark Tools")
 
 So in total, we will be using these Spark Tools on our training and testing data like so:
 ![alt text](/images_n/chart5.png "Chart 5")
