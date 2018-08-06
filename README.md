@@ -39,7 +39,7 @@ There are tons of different models to use, so how do you pick which one? [Here](
 A lot of people hear the buzzword "Neural Nets" thrown around whenever Machine Learning is mentioned, but there are actually lots of different types of Machine Learning Algorithms--and depending on what you want, you'll pick a different method. 
 Let's follow the cheat sheet for our example:
 
-![alt text](/images_n/cheatsheet.png "Cheat Sheet")
+![alt text](/images_n/mlcheatsheet.png "Cheat Sheet")
 
 **A.** We are not doing Dimension Reduction (that is sort of its entirely own topic you can read more about it [here](https://en.wikipedia.org/wiki/Dimensionality_reduction "Wikipedia"))
 
