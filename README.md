@@ -26,8 +26,8 @@ If you already know the basics of ML and just want to learn about Spark Tools/Pi
 Keith likes to collect knives and swords. There are 2 *features* he considers when deciding to get one: color and size  
 Based on knives he bought in the past, can we predict whether or not he will buy a particular knife in the future?
 ![alt text](/images_n/chart2.png "Chart 2")
-This dummy example I created can be found in data.csv. The data is only 50 rows long to allow for easy human understanding and intervention. It's purpose to to help to learn the concepts of what's going on. In real life, data can be literally millions, if not billions, of rows long and thus it becomes basically impossible for humans to analyze on their own. 
-Now’s a good time to open up the .csv file in something like Excel to get a feel for what's going on.
+This dummy example I created can be found in `data.csv`. The data is only 50 rows long to allow for easy human understanding and intervention. Its purpose is just to help to learn the concepts of what's going on. In real life, data can be literally millions, if not billions, of rows long and thus it becomes basically impossible for humans to analyze on their own. 
+Now’s a good time to open up the `data.csv` file in something like Excel to get a feel for what's going on.
 ![alt text](/images_n/goal2.png "Goal")
 
 Cool, now that we have our data...
@@ -64,7 +64,7 @@ You can read more about the math and theory behind Decision Trees [here](https:/
 
 ![alt text](/images_n/parkTree.png "Park DT")
 
-Our goal is to make a tree like this, but for Keith’s knife-buying scenario.  
+**Our goal is to make a tree like this, but for Keith’s knife-buying scenario.**  
 Out features are Color and Size and we want to predict Buying the knife. 
 
 Keep in mind that in real scenarios, you could have hundreds of features and you could generate a decision tree so incredibly massive, that it’s basically just for computers to use (not very human-readable). 
@@ -75,23 +75,23 @@ Now that we've picked which model we are using...
 
 # How do we actually use it? 
 
-**To train a Decision Tree, you need to give it one vector column that represents all of the features and one numerical column that represents the prediction label. **
+**To train a Decision Tree, you need to give it one vector column that represents all of the features and one numerical column that represents the prediction label.**  
 
 So we have to take the data that we have and turn it into something...more number-y for the Decision Tree to work with. So let’s carefully look at the data we have so we can get started. 
 
 In fact, one of the first thing you should always do in any machine learning project is to actually look at the data and plan your steps. Data scientists actually typically spend more than half their time cleaning and preparing data, and only the remaining time for training models and further analysis. 
 
 Luckily, the data I provided purposefully needs minimal cleaning and prep. Let's take a look:  
-We need to somehow turn the features we have into a vector and have the prediction be number. 
+We need to somehow turn the prediction label into a number and turn the features we have into a vector. 
 ![alt text](/images_n/goal.png "Data Prep")
 
 So we have a nice little task list:
-## Task 1 - turn the Prediction Label (Bought) into something numerical
+## Task 1 - Turn the Prediction Label (Bought) into something numerical
 ![alt text](/images_n/task1.png "Task 1")
 ## Task 2 - Turn the Colors feature into a numerical index 
 (Size is already numerical, so we're all set there) 
 ![alt text](/images_n/task2.png "Task 2")
-## Task 3 - Combine the features into one features vector column  
+## Task 3 - Combine the features into one feature vector column  
 ![alt text](/images_n/task3.png "Task 3")
 ## Task 4 - Use this prepared data to train a Decision Tree Model 
 ![alt text](/images_n/task4.png "Task 4")
@@ -109,7 +109,7 @@ Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vec
 ## Task 4
 Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
 
-Ok so what exactly are these three new...
+Ok so what exactly are these three new Spark Tools?
 
 # Spark Tools 
 For now, read the sheet below and just understand what each tool does. The rest (about Estimators and Transformers) will make more sense after reading the next sheet about Pipelines, Estimators, and Transformers. 
@@ -146,6 +146,8 @@ All right! Time to get started with the code!
 
 **Follow along with the code in `DecisionTree.py` as you look at this diagram. This is the important part where you should spend most of your time! Feel free to rewrite the code on your own so you really get what’s going on!**
 ![alt text](/images_n/chart6.png)
+
+Open up `exampleOutput.txt` to see an example of what the code does accomplishes in the end. 
 
 And that’s about it! You have just successfully used an ML Pipeline to carry out the training and testing of a Decision Tree! Congrats! :)
 
