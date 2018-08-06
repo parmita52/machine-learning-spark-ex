@@ -68,7 +68,7 @@ You can read more about the math and theory behind Decision Trees [here](https:/
 Out features are Color and Size and we want to predict Buying the knife. 
 
 Keep in mind that in real scenarios, you could have hundreds of features and you could generate a decision tree so incredibly massive, that it’s basically just for computers to use (not very human-readable). 
-![alt text](/images_n/bigdt.png "rly big tree")
+![alt text](/images_n/bigdecisiontree.png "rly big tree")
 You could also choose to limit the size of tree to ensure that it is in fact, human-readable. In our case, with 2 measly features, we’ll end up with a nice tiny human-readable tree anyways. 
 
 Now that we've picked which model we are using...
