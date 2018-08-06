@@ -15,7 +15,7 @@ sc = SparkContext(master='local[*]', appName="KeithExample")
 spark = SparkSession(sc)
 
 """Read in the data"""
-df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("Keith.csv")
+df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("data.csv")
 df = df.withColumn("Bought_Flag", df["Bought"].cast("boolean").cast("int"))
 df.show()
 df.printSchema()
