@@ -7,8 +7,8 @@ If you already know the basics of ML and just want to learn about Spark Tools/Pi
 - [Toy Example](https://github.com/parmita52/machine-learning-spark-ex#our-toy-example)
 - [Picking a Model](https://github.com/parmita52/machine-learning-spark-ex#what-model-do-we-use)
 - [Using the Model](https://github.com/parmita52/machine-learning-spark-ex#how-do-we-actually-use-it)
-- [Spark Tools](https://github.com/parmita52/machine-learning-spark-ex#spark-tools) <-- skip here if advanced 
-- [Spark Pipeline](https://github.com/parmita52/machine-learning-spark-ex#spark-pipeline)
+- [Spark Pipeline](https://github.com/parmita52/machine-learning-spark-ex#spark-pipeline)  <-- skip here if advanced 
+- [Spark Tools](https://github.com/parmita52/machine-learning-spark-ex#spark-tools)
 - [Implementing it!](https://github.com/parmita52/machine-learning-spark-ex#lets-get-to-it)
 - [Results](https://github.com/parmita52/machine-learning-spark-ex#results)
 - [Conclusion](https://github.com/parmita52/machine-learning-spark-ex#conclusion)
@@ -86,19 +86,22 @@ We need to somehow turn the prediction label into a number and turn the features
 ![alt text](/images_n/goal.png "Data Prep")
 
 So we have a nice little task list:
-## Task 1 - Turn the Prediction Label (Bought) into something numerical
+### Task 1 - Turn the Prediction Label (Bought) into something numerical
 ![alt text](/images_n/task1.png "Task 1")
-Just use casting
-## Task 2 - Turn the Colors feature into a numerical index 
+**Solution:** Just use casting: `.cast("boolean").cast("int")`
+---
+### Task 2 - Turn the Colors feature into a numerical index 
 (Size is already numerical, so we're all set there) 
 ![alt text](/images_n/task2.png "Task 2")
-Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
-## Task 3 - Combine the features into one feature vector column  
+**Solution:** Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
+---
+### Task 3 - Combine the features into one feature vector column  
 ![alt text](/images_n/task3.png "Task 3")
-Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
-## Task 4 - Use this prepared data to train a Decision Tree Model 
+**Solution:** Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
+---
+### Task 4 - Use this prepared data to train a Decision Tree Model 
 ![alt text](/images_n/task4.png "Task 4")
-Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
+**Solution:** Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
 
 Ok, so what exactly is a StringIndexer, VectorAssembler, and DecisionTreeClassifier? These three Spark Tools are the Estimators and Transformers that will make up our Spark Pipeline. (Don't worry if you didn't understand any of those terms yet--we're about to define them!)  
 
