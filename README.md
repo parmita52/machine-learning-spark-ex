@@ -94,17 +94,17 @@ So we have a nice little task list:
 ### Task 2 - Turn the Colors feature into a numerical index 
 (Size is already numerical, so we're all set there) 
 ![alt text](/images_n/task2.png "Task 2")
-**Solution:** Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)
+**Solution:** Use a [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) (we'll explain this in the Spark Tools section)
 
 ---
 ### Task 3 - Combine the features into one feature vector column  
 ![alt text](/images_n/task3.png "Task 3")
-**Solution:** Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler)
+**Solution:** Use a [VectorAssembler](https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler) (we'll explain this in the Spark Tools section)
 
 ---
 ### Task 4 - Use this prepared data to train a Decision Tree Model 
 ![alt text](/images_n/task4.png "Task 4")
-**Solution:** Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier)
+**Solution:** Use a [DecisionTreeClassifier](https://spark.apache.org/docs/latest/api/python/pyspark.ml.html#pyspark.ml.classification.DecisionTreeClassifier) (we'll explain this in the Spark Tools section)
 
 ---
 
