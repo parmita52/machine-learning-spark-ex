@@ -16,14 +16,14 @@ spark = SparkSession(sc)
 
 """Read in the data"""
 df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("data.csv")
-df = df.withColumn("Bought_Flag", df["Bought"].cast("boolean").cast("int"))
+df = df.withColumn("Bought_Flag", df["Bought"].cast("boolean").cast("int"))                         # TASK 1   
 df.show()
 df.printSchema()
 
 """Elements of our Pipeline"""
-color_indexer = StringIndexer(inputCol='Color', outputCol='Color_index')
-assembler = VectorAssembler(inputCols=['Color_index', 'Size'], outputCol="feature_vector")
-dt = DecisionTreeClassifier(labelCol="Bought_Flag", featuresCol="feature_vector")
+color_indexer = StringIndexer(inputCol='Color', outputCol='Color_index')                            # TASK 2
+assembler = VectorAssembler(inputCols=['Color_index', 'Size'], outputCol="feature_vector")          # TASK 3
+dt = DecisionTreeClassifier(labelCol="Bought_Flag", featuresCol="feature_vector")                   # TASK 4
 
 """Split data for training (70%) and testing (30%)"""
 (trainingData, testData) = df.randomSplit([0.7, 0.3])
