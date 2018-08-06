@@ -243,6 +243,13 @@ Python list comprehension can be super useful here! Note how there’s less repe
 
 # Q & A
 
+## Who is Keith?
+He's my favorite character from a TV show I like and I thought using him as a little story would keep this tutorial fun and interesting. 
+## What is a rainbow knife?
+itsa meme sry
+## Do you take constructive criticism? 
+Yes! Please let me know if there are any way you think I could improve. I'd also love to hear how you used this tutorial! 
+
 
 
 
